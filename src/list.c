@@ -12,4 +12,4 @@
   *head = newNode;
 }
 
-void remove(0;20;15M0;20;15m)
+void remove();//edit here 
