@@ -7,7 +7,7 @@
 
 };
 
-  void add(struct node **head, void *data);
+  void add(struct node **head, void *data, struct node *after);
   
-  void remove(struct node **head, void *data, int (*cmp)(void *, void *));
+  void removeN(struct node **head, void *data);
 #endif

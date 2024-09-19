@@ -9,7 +9,7 @@ extern int __bss_start, __bss_end;
   char *bss = &__bss_start;
   
   while(bss < &__bss_end){
-  *bss++ == 0;
+  *bss++ = 0;
 	}
 
 	}
