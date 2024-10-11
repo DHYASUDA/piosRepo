@@ -1,3 +1,4 @@
+#include <stdio.h>
 struct ppage physical_page_array[128];
 
 void init_pfa_list(void) {
@@ -58,3 +59,56 @@ void free_physical_pages(struct ppage *ppage_list) {
         current_page->prev = NULL;
     }
 }
+
+
+void test_physical_page_allocator() {
+    printf("creatingphysical page allocator: \n");
+    init_pfa_list();
+
+    printf("Allocating 3 pages...\n");
+    struct ppage *allocd_list = allocate_physical_pages(3);
+
+    // Check if we got 3 unique pages and print their physical addresses
+    struct ppage *current = allocd_list;
+    int count = 0;
+    while (current != NULL) {
+        printf("Allocated page %d at physical address: %p\n", count++, current->physical_addr);
+        current = current->next;
+    }
+
+    // Free the allocated pages
+    printf("Freeing allocated pages...\n");
+    free_physical_pages(allocd_list);
+
+    // Allocate more pages and check again
+    printf("Allocating 2 more pages...\n");
+    allocd_list = allocate_physical_pages(2);
+
+    count = 0;
+    current = allocd_list;
+    while (current != NULL) {
+        printf("Allocated page %d at physical address: %p\n", count++, current->physical_addr);
+        current = current->next;
+    }
+
+    // Free the pages again
+    printf("Freeing allocated pages...\n");
+    free_physical_pages(allocd_list);
+
+    // Final check for correct memory management
+    printf("Physical page allocator test completed.\n");
+}
+/*void print_free_list() {
+    struct ppage *current = free_physical_pages;
+    int count = 0;
+    while (current != NULL) {
+        printf("Free page %d at physical address: %p\n", count++, current->physical_addr);
+        current = current->next;
+    }
+}*/
+
+int main(){
+    test_physical_page_allocator();
+    return 0;
+}
+
