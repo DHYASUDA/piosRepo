@@ -1,3 +1,4 @@
+
 #ifndef __RPRINTF_H__
 #define __RPRINTF_H__
 
@@ -5,13 +6,12 @@
 //#include <ctype.h>
 //#include <string.h>
 #include <stdarg.h>
+#include <stdint.h>
+//typedef unsigned int  size_t;
 
-typedef unsigned int  size_t;
+//#define NULL (void*)0
 
-#define NULL (void*)0
-
-int isdig(int c); // hand-implemented alternative to isdigit(), which uses a bunch of c library functions I don't want to include.
-
+int isdig(int c); 
 typedef char* charptr;
 typedef int (*func_ptr)(int c);
 

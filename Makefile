@@ -5,7 +5,7 @@ LD := aarch64-linux-gnu-ld
 OBJDUMP := aarch64-linux-gnu--objdump
 OBJCOPY := aarch64-linux-gnu-objcopy
 CONFIGS := -DCONFIG_HEAP_SIZE=4096
-
+TARGET = page_test
 CFLAGS := -O0 -ffreestanding -fno-pie -fno-stack-protector -g3 -mcpu=cortex-a53+nofp -Wall $(CONFIGS)
 
 
@@ -15,6 +15,7 @@ SDIR = src
 OBJS = \
 	boot.o \
 	kernel_main.o \
+	page.o main.o \
 
 
 
