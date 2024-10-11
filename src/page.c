@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "page.h"
+
 struct ppage physical_page_array[128];
 struct ppage  *free_physical_page_list = NULL;
 
@@ -68,10 +69,10 @@ void test_physical_page_allocator() {
     printf("creatingphysical page allocator: \n");
     init_pfa_list();
 
-    printf("Allocating 3 pages...\n");
-    struct ppage *allocd_list = allocate_physical_pages(3);
+    printf("Allocating 5 pages...\n");
+    struct ppage *allocd_list = allocate_physical_pages(5);
 
-    // Check if we got 3 unique pages and print their physical addresses
+    // Check if we got 5 unique pages and print their physical addresses
     struct ppage *current = allocd_list;
     int count = 0;
     while (current != NULL) {
